@@ -1,0 +1,12 @@
+﻿services:
+  inheritance:
+    image: inheritance
+    build:
+      context: .
+      dockerfile: src/inheritance/Dockerfile
+
+  composition:
+    image: composition
+    build:
+      context: .
+      dockerfile: src/composition/Dockerfile
