@@ -7,6 +7,8 @@ foreach (var animal in animals)
     animal.Run();
     animal.Eat();
     animal.Sleep();
+    animal.MakeSound();
+    animal.Swimming();
 }
 
 interface IAnimal
@@ -14,40 +16,132 @@ interface IAnimal
     void Run();
     void Eat();
     void Sleep();
+    void MakeSound();
+    void Swimming();
+    void Fly();
 }
 
-public class Cat : IAnimal
+public abstract class Animal : IAnimal
 {
-    public void Run()
+    protected readonly string Name;
+
+    protected Animal(string name)
     {
-        Console.WriteLine("Cat is running");
+        Name = name;
     }
 
-    public void Eat()
-    {
-        Console.WriteLine("Cat is eating");
-    }
+    public abstract void Run();
 
-    public void Sleep()
-    {
-        Console.WriteLine("Cat is sleeping");
-    }
+    public abstract void Eat();
+
+    public abstract void Sleep();
+    public abstract void MakeSound();
+
+    public abstract void Swimming();
+    public abstract void Fly();
 }
 
-public class Dog : IAnimal
+public class Cat : Animal
 {
-    public void Run()
+    public Cat(string name = nameof(Cat)) : base(name)
     {
-        Console.WriteLine("Dog is running");
     }
 
-    public void Eat()
+    public override void Run()
     {
-        Console.WriteLine("Dog is eating");
+        Console.WriteLine($"{Name} is running");
     }
 
-    public void Sleep()
+    public override void Eat()
     {
-        Console.WriteLine("Dog is sleeping");
+        Console.WriteLine($"{Name} is eating");
+    }
+
+    public override void Sleep()
+    {
+        Console.WriteLine($"{Name} is sleeping");
+    }
+
+    public override void MakeSound()
+    {
+        Console.WriteLine($"{Name} is making sound");
+    }
+
+    public override void Swimming()
+    {
+        Console.WriteLine($"{Name} is swimming");
+    }
+
+    public override void Fly()
+    {
+        Console.WriteLine($"{Name} is flying");
     }
 }
+
+public class Dog : Animal
+{
+    public Dog(string name = nameof(Dog)) : base(name)
+    {
+    }
+
+    public override void Run()
+    {
+        Console.WriteLine($"{Name} is running");
+    }
+
+    public override void Eat()
+    {
+        Console.WriteLine($"{Name} is eating");
+    }
+
+    public override void Sleep()
+    {
+        Console.WriteLine($"{Name} is sleeping");
+    }
+
+    public override void MakeSound()
+    {
+        Console.WriteLine($"{Name} is making sound");
+    }
+
+    public override void Swimming()
+    {
+        Console.WriteLine($"{Name} is swimming");
+    }
+
+    public override void Fly()
+    {
+        Console.WriteLine($"{Name} is flying");
+    }
+}
+
+//
+// public interface IRunable
+// {
+//     void Run();
+// }
+//
+// public interface IEatable
+// {
+//     void Eat();
+// }
+//
+// public interface ISleepable
+// {
+//     void Sleep();
+// }
+//
+// public interface IMakeSoundable
+// {
+//     void MakeSound();
+// }
+//
+// public interface ISwimmable
+// {
+//     void Swimming();
+// }
+//
+// public interface IFlyable
+// {
+//     void Fly();
+// }
